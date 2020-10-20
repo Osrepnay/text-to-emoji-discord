@@ -1,17 +1,18 @@
+import java.lang.StringBuilder;
 import java.util.Scanner;
 public class Converter{
 	public static void main(String[] args){
 		Scanner s=new Scanner(System.in);
-		System.out.println("Input:");
+		System.out.print("Input: ");
 		String input=s.nextLine();
-		String[] inputSplit=input.split(" ");
-		String[] newStrings=new String[inputSplit.length];
-		for(int i=0; i<inputSplit.length; i++){
-			newStrings[i]="";
-			for(int j=0; j<inputSplit[i].length(); j++){
-				newStrings[i]+=":regional_indicator_"+inputSplit[i].toLowerCase().charAt(j)+": ";
+		StringBuilder newString=new StringBuilder();
+		for(int i=0; i<input.length(); i++){
+			if(input.charAt(i)!=' '){
+				newString.append(":regional_indicator_"+input.charAt(i)+": ");
+			}else{
+				newString.append("  ");
 			}
 		}
-		System.out.println(String.join("   ", newStrings));
+		System.out.println(newString);
 	}
 }
